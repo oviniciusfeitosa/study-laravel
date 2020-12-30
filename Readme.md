@@ -12,7 +12,7 @@ Study case of Laravel 8 PHP framework.
 ## TodoList
 
 - [ ] Laravel 8
-
+  - [x] Breeze
   - [x] JetStream + Liveware
   - [x] API Only
     - https://medium.com/@tsubasakondo_36683/make-laravel-api-only-2da47a0f92b7
