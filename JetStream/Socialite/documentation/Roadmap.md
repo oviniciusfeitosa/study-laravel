@@ -171,6 +171,100 @@ return [
 ]
 ```
 
+## Set facebook environments
+
+- Open the `.env` file and set the environments below:
+
+```dotenv
+...
+FACEBOOK_ID=xxxxxx
+FACEBOOK_SECRET=yyyyyy
+...
+```
+
+## Generate and Configure Controller
+
+```shell
+sail artisan make:controller SocialController
+```
+
+- Open `app/Http/Controllers/SocialController.php` and place the following code.
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Models\User;
+use Validator;
+use Socialite;
+use Exception;
+use Auth;
+
+class SocialController extends Controller
+{
+    public function facebookRedirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+    
+    public function loginWithFacebook()
+    {
+        try {
+    
+            $user = Socialite::driver('facebook')->user();
+            $isUser = User::where('fb_id', $user->id)->first();
+     
+            if($isUser){
+                Auth::login($isUser);
+                return redirect('/dashboard');
+            }else{
+                $createUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'fb_id' => $user->id,
+                    'password' => encrypt('admin@123')
+                ]);
+    
+                Auth::login($createUser);
+                return redirect('/dashboard');
+            }
+    
+        } catch (Exception $exception) {
+            dd($exception->getMessage());
+        }
+    }
+}
+```
+
+## Setting Up Route
+
+- Open `routes/web.php` file and define the routes
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SocialController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('auth/facebook', [SocialController::class, 'facebookRedirect']);
+
+Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+```
+
 ## References
 
 - https://www.positronx.io/laravel-socialite-login-with-facebook-tutorial-with-example/
