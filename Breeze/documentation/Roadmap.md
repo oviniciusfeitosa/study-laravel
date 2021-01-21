@@ -15,7 +15,7 @@ sail up -d
 ## Add Breeze dependency
 
 ```shell
-composer require laravel/breeze --dev
+sail composer require laravel/breeze --dev
 ```
 
 ## Install Breeze
