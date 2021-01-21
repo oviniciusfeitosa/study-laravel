@@ -15,7 +15,7 @@ curl -s https://laravel.build/Sanctum | bash
 ## Add Breeze dependency
 
 ```shell
-composer require laravel/breeze --dev
+sail composer require laravel/breeze --dev
 ```
 
 ## Install Breeze
@@ -26,7 +26,7 @@ After Breeze is installed, you should also compile your assets so that your appl
 
 ```shell
 sail artisan breeze:install 
-npm install && npm run dev
+sail npm install && sail npm run dev
 ```
 
 ## Migrations
