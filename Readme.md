@@ -8,7 +8,7 @@ Study case of Laravel 8 PHP framework.
 - 2 - JetStream
   - [2.1 - EventListener](./JetStream/EventListener/README.md)
   - [2.2 - Socialite](./JetStream/Socialite/README.md)
-- [3 - Only API](./OnlyAPI/README.md)
+- [3 - Only API](./OnlyAPI/SimpleAuth/README.md)
 
 ## TodoList
 
@@ -22,12 +22,7 @@ Study case of Laravel 8 PHP framework.
     - [Reference 2](https://medium.com/dev-genius/laravel-8-x-events-and-listeners-5608ff25f997)
   - [ ] [Authentication with Sanctum](https://laravel.com/docs/8.x/sanctum)
   - [ ] [Queues](https://laravel.com/docs/8.x/queues)
-  - [ ] API + JWT auth & Web + Breeze Starter kit ?
-
-## FailList
-
-- [x] Execute StreamLabs no Linux
-
+  
 ## References
 
 - Versioning
