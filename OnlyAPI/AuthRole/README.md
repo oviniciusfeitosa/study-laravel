@@ -1,4 +1,4 @@
-# Laravel - Only API - Simple Auth
+# Laravel - Only API - AuthRole
 
 ## Technologies
 
