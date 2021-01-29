@@ -14,10 +14,16 @@ Open the .env file, and update your database configurations.
 DB_HOST=mysql
 ```
 
+## Start Application with Sail
+
+```sh
+sail up -d
+```
+
 ## Install Laravel Passport
 
 ```sh
-composer require laravel/passport
+sail composer require laravel/passport
 ```
 
 -   Inside `app/Providers/AppServiceProvider.php` add this to the `boot` function
@@ -29,11 +35,7 @@ use Illuminate\Support\Facades\Schema;
 Schema::defaultstringLength(191);
 ```
 
-## Start Application with Sail
 
-```sh
-sail up -d
-```
 
 ## Database migrations
 
